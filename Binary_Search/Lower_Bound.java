@@ -1,4 +1,6 @@
 class Solution {
+    // search insertion code
+    
     public int lowerBound(int[] nums, int x) {
        int left=0;
        int right=nums.length-1;
