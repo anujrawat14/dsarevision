@@ -1,17 +1,24 @@
 class Solution {
-    public int findKthPositive(int[] arr, int k) {
-        int n=arr.length;
-        if (k < arr[0]) {
-            return k;
-        }
-        for (int i = 0; i < n; i++) {
-            if (arr[i] <= k) {
-                k++;
+
+ public int findKthPositive(int[] arr, int k) {
+        int n = arr.length;
+        int left = 0;
+        int right = n - 1;
+
+        // Binary Search
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            int missing = arr[mid] - (mid + 1);
+
+            if (missing < k) {
+                left = mid + 1;
+            } else {
+                right = mid - 1;
             }
-            else{
-                break;
-            }
         }
-        return k;
+
+        // Final answer
+        return left + k;
     }
 }
