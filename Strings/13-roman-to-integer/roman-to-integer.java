@@ -12,25 +12,39 @@ class Solution {
         hm.put('D', 500);
         hm.put('M', 1000);
 
-        int ans = hm.get(s.charAt(0));
+        // int ans = hm.get(s.charAt(0));
 
-        for (int i = 1; i < s.length(); i++) {
+        // for (int i = 1; i < s.length(); i++) {
 
-            char prev = s.charAt(i - 1);
-            int prevvalue = hm.get(prev);
+        //     char prev = s.charAt(i - 1);
+        //     int prevvalue = hm.get(prev);
 
-            char curr = s.charAt(i);
-            int currvalue = hm.get(curr);
+        //     char curr = s.charAt(i);
+        //     int currvalue = hm.get(curr);
 
-            if (prevvalue < currvalue) {
-                int diff = currvalue - 2*prevvalue;
-                ans += diff;
+        //     if (prevvalue < currvalue) {
+        //         int diff = currvalue - 2*prevvalue;
+        //         ans += diff;
+        //     } else {
+
+        //         ans += hm.get(curr);
+        //     }
+
+        // }
+
+        int ans = hm.get(s.charAt(s.length() - 1));
+
+        for (int i = s.length() - 2; i >= 0; i--) {
+            int curr = hm.get(s.charAt(i));
+            int next = hm.get(s.charAt(i + 1));
+
+            if (next>curr) {
+                ans -=curr ;
             } else {
-
-                ans += hm.get(curr);
+                ans += curr;
             }
-
         }
+
         return ans;
     }
 }
