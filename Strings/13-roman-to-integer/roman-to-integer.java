@@ -12,6 +12,8 @@ class Solution {
         hm.put('D', 500);
         hm.put('M', 1000);
 
+        //u can also use switch case
+
         // int ans = hm.get(s.charAt(0));
 
         // for (int i = 1; i < s.length(); i++) {
