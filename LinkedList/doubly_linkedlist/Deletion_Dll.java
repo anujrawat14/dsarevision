@@ -1,73 +1,76 @@
-//deletion at head
- private static Node DeleteHead(Node head){
-        if(head == null) return null;
-       head=head.next;
-        if(head!=null){
-            head.prev=null;
-          }
-        return head;
- }
+// Delete the head node
+private static Node DeleteHead(Node head) {
+    if (head == null) return null;
 
-//delet at tail
- private static Node deleteTail(Node head){
-        if(head==null || head.next==null) return null;
-        
-        Node temp=head;
-        while(temp.next!=null ){
-            temp=temp.next;
-        }
-        //temp have 40
-        temp.prev.next=null;//40.prev=30.next=null
-        temp.prev=null;//40.prev=null;
+    head = head.next;
 
-        return head;
+    if (head != null) {
+        head.prev = null;
+    }
+
+    return head;
 }
 
-//delete at k position
+// Delete the tail node
+private static Node deleteTail(Node head) {
+    if (head == null || head.next == null) return null;
+
+    Node temp = head;
+
+    // Reach the last node
+    while (temp.next != null) {
+        temp = temp.next;
+    }
+
+    // Remove the last node
+    temp.prev.next = null;
+    temp.prev = null;
+
+    return head;
+}
+
+// Delete the node at the kth position
 private static Node deleteAtK(Node head, int k) {
 
-    if (head == null)
-        return null;
+    if (head == null) return null;
 
-    if (k == 1) //head delete
-        return deleteHead(head);
+    // Delete head
+    if (k == 1) return DeleteHead(head);
 
     int count = 1;
     Node temp = head;
 
+    // Reach the kth node
     while (temp != null && count < k) {
-      //temp ki woh value milegi jiko delet krna hai
         temp = temp.next;
         count++;
     }
 
-    if (temp == null)
-        return head;
+    // Position doesn't exist
+    if (temp == null) return head;
 
-    if (temp.next != null) { //agr uska bad bhi koi elemnt hai toh
+    // Update next node
+    if (temp.next != null) {
         temp.next.prev = temp.prev;
     }
 
-    if (temp.prev != null) { //agr us aphla koi elemnt hai toh
-        temp.prev.next = temp.next;
-    }
+    // Update previous node
+    temp.prev.next = temp.next;
 
+    // Detach the node
     temp.next = null;
     temp.prev = null;
 
     return head;
 }
 
-//delete at k value
+// Delete the node having value k
 private static Node deletek(Node head, int k) {
 
-    // Empty list
-    if (head == null)
-        return null;
+    if (head == null) return null;
 
-    // Delete head if it contains the given value
-    if (head.data == k)
-        return DeleteHead(head);
+    // Delete head if it contains k
+    if (head.data == k) return DeleteHead(head);
 
     Node temp = head;
 
@@ -77,15 +80,14 @@ private static Node deletek(Node head, int k) {
     }
 
     // Value not found
-    if (temp == null)
-        return head;
+    if (temp == null) return head;
 
-    // Update the next node's previous pointer
+    // Update next node
     if (temp.next != null) {
         temp.next.prev = temp.prev;
     }
 
-    // Update the previous node's next pointer
+    // Update previous node
     temp.prev.next = temp.next;
 
     // Detach the node
