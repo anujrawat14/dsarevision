@@ -9,28 +9,28 @@
  * }
  */
 class Solution {
-    public int length(ListNode head){
-        if(head ==null){
+    public int length(ListNode head) {
+        if (head == null) {
             return 0;
         }
-        int count=0;
-        ListNode temp=head;
-        while(temp!=null){
-            temp=temp.next;
+        int count = 0;
+        ListNode temp = head;
+        while (temp != null) {
+            temp = temp.next;
             count++;
         }
         return count;
     }
+
     public ListNode middleNode(ListNode head) {
         int count=length(head);
-        int mi=(count/2)+1;
+        int mid = count / 2;
 
-        ListNode temp=head;
-        int counter=1;
-        while(counter<mi){
-            temp=temp.next;
-            counter++;
+        ListNode temp = head;
+        for (int i = 0; i < mid; i++) {
+            temp = temp.next;
         }
+
         return temp;
     }
 }
