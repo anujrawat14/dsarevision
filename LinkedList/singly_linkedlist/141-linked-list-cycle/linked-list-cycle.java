@@ -1,3 +1,4 @@
+
 /**
  * Definition for singly-linked list.
  * class ListNode {
@@ -13,19 +14,33 @@ import java.util.HashMap;
 
 public class Solution {
     public boolean hasCycle(ListNode head) {
-        HashMap<ListNode,Boolean> hm=new HashMap<>();
+         //brute force using hashmap to store the pointer 
+        // HashMap<ListNode, Boolean> hm = new HashMap<>();
 
-        ListNode temp=head;
+        // ListNode temp = head;
 
-        while(temp!=null){
-        if(hm.containsKey(temp)){
-            return true;
-        }
-        else{
-            hm.put(temp,true);
-        }
-            temp=temp.next;
-        }
+        // while (temp != null) {
+        //     if (hm.containsKey(temp)) {
+        //         return true;
+        //     } else {
+        //         hm.put(temp, true);
+        //     }
+        //     temp = temp.next;
+        // }
+        // return false;
+
+        //optimal using  tortoise slow fast pointer
+        ListNode slow=head;
+        ListNode fast=head;
+
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+            if(slow==fast){
+                return true;
+            }
+
+        }        
     return false;
     }
 }
