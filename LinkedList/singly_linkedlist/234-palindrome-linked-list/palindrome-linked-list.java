@@ -72,7 +72,7 @@ class Solution {
             temp = temp.next;
             newTemp = newTemp.next;
         }
-        reverse(NewHead);
+        // reverse(NewHead);
         return true;
     }
 }
