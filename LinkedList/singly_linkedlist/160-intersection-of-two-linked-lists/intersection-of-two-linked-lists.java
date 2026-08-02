@@ -62,18 +62,12 @@ public class Solution {
         //using two pointers
         int l1 = length(headA);
         int l2 = length(headB);
-        int diff;
-        ListNode fast, slow;
 
-        if (l1 > l2) {
-            fast = headA;
-            slow = headB;
-            diff = l1 - l2;
-        } else {
-            fast = headB;
-            slow = headA;
-            diff = l2 - l1;
-        }
+        ListNode fast = (l1 >= l2) ? headA : headB;
+        ListNode slow = (l1 >= l2) ? headB : headA;
+
+        int diff = Math.abs(l1 - l2);
+
         for (int i = 0; i < diff; i++) {
             fast = fast.next;
         }
