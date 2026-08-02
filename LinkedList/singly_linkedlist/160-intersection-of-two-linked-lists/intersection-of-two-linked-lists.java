@@ -9,22 +9,41 @@
  *     }
  * }
  */
+ import java.util.HashSet;
 public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        ListNode first = headA;
+        //brute force taking two loops
+        // ListNode first = headA;
 
-        while (first != null ) {
-         ListNode second = headB;
-            while (second != null) {
-                if (first == second) {
-                    return first;
-                }
-                second=second.next;
-            }
-            first=first.next;
+        // while (first != null ) {
+        //  ListNode second = headB;
+        //     while (second != null) {
+        //         if (first == second) {
+        //             return first;
+        //         }
+        //         second=second.next;
+        //     }
+        //     first=first.next;
+
+        // }
+
+        // return null;
+
+        //using hash map
+        HashSet< ListNode> set = new HashSet<>();
+        ListNode first = headA;
+        while (first != null) {
+            set.add( first);
+            first = first.next;
 
         }
-
+        ListNode second = headB;
+        while (second != null) {
+            if (set.contains(second)) {
+                return second;
+            }
+            second = second.next;
+        }
         return null;
     }
 }
