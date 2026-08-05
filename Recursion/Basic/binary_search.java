@@ -11,11 +11,11 @@ class Main {
       System.out.println(index);
     }
     static int Bs(int[] arr,int target,int left,int right){
-        int mid=left+(right-left)/2;
         if(left>right){
             //base condition
             return -1;
         }
+        int mid=left+(right-left)/2;
         if(arr[mid]==target){
             return mid;
         }
