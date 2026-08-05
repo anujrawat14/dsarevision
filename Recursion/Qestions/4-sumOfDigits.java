@@ -1,3 +1,6 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
 class Main {
     public static void main(String[] args) {
         int result=sumDigit(-1345);
@@ -6,9 +9,9 @@ class Main {
     }
     static int sumDigit(int n){
         n=Math.abs(n);
-        if(n<10){
-            return n;
+        if(n==0){
+            return 0;
         }
-        return sumDigit(n/10)+n%10;
+        return n%10+sumDigit(n/10);
     }
 }
