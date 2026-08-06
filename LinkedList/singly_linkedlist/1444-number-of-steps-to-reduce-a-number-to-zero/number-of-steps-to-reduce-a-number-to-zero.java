@@ -15,7 +15,7 @@ class Solution {
         if (even) {
             return helper(num / 2, count + 1);
         } else {
-            return helper(num - 1, count+1);
+            return helper(num - 1, count + 1);
         }
     }
 }
