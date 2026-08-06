@@ -3,7 +3,8 @@
 
 class Main {
     public static void main(String[] args) {
-        int arr[]={1,2,3,6,5};
+        // int arr[]={1,2,3,6,5};
+        int arr[]={1,2,3,4,5};
         boolean ans=sorted(arr);
         System.out.println(ans);
     }
@@ -17,11 +18,12 @@ class Main {
         if(s==arr.length-1){
             return true;
         }
-        if(arr[s]<=arr[s+1]){
-            return helper(arr,s+1);
-        }else{
-            return false;
-        }
+        // if(arr[s]<=arr[s+1]){
+        //     return helper(arr,s+1);
+        // }else{
+        //     return false;
+        // }
+        return arr[s]<arr[s+1] &&  helper(arr,s+1);
     }
     
 }
