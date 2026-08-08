@@ -4,8 +4,6 @@
 // * * * * 
 
 //USING TAIL RECURSION
-// Online Java Compiler
-// Use this editor to write, compile and run your Java code online
 
 // class Main {
 //       static void fun(int n){
@@ -28,3 +26,24 @@
 //        fun(4);
 //     }
 // }
+//using Non tail recurssion
+
+
+class Main {
+    static void    print(int r,int c){
+        if(r==0){
+            return;
+        }
+        if(r>c){
+            print(r,c+1);
+            System.out.print("* ");
+        }
+        else{
+            print(r-1,0);
+            System.out.println();
+        }
+    }
+    public static void main(String[] args) {
+       print(4,0);
+    }
+}
