@@ -43,3 +43,36 @@
 //         System.out.println(result);
 //     }
 // }
+
+
+//Appraoch 3
+
+
+import java.util.ArrayList;
+class Main {
+    static ArrayList<String> subset(String p,String str) {
+        
+       
+        
+        if(str.isEmpty()){
+             ArrayList<String> list=new ArrayList<>();
+            list.add(p);
+            return list;
+        }
+        char ch=str.charAt(0);
+        //lena hai
+         ArrayList<String> left=subset(p+ch,str.substring(1));
+        // nhi liya
+         ArrayList<String> right=subset(p,str.substring(1));
+            left.addAll(right);
+            return left;
+        
+    }
+
+    public static void main(String[] args) {
+      ArrayList<String> result = new ArrayList<>();
+      result= subset("", "abc");
+       
+        System.out.println(result);
+    }
+}
