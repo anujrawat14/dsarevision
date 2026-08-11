@@ -1,4 +1,5 @@
-//quick sort code
+//quick sort code taking last as my pivot elemnt
+
 class Main {
     static void quickSort(int arr[],int low,int high){
         if(low >= high){
