@@ -28,23 +28,43 @@
 
 // Approach 2
 
-class Main {
-    public static String removeA(String str,StringBuilder ans,int i){
-        if(str.length()==i){
-            return ans.toString();
-        }
-        if(str.charAt(i)!='a'){
-           ans.append(str.charAt(i));
-        }
+// class Main {
+//     public static String removeA(String str,StringBuilder ans,int i){
+//         if(str.length()==i){
+//             return ans.toString();
+//         }
+//         if(str.charAt(i)!='a'){
+//            ans.append(str.charAt(i));
+//         }
        
-        return removeA(str,ans,i+1);
+//         return removeA(str,ans,i+1);
       
+//     }
+//     public static void main(String[] args) {
+//         String str="abba";
+//         StringBuilder ans=new StringBuilder();
+//         String res=removeA(str,ans,0);
+        
+//         System.out.println(res);
+//     }
+// }
+
+//Approach 3
+
+class Main {
+    static String removeA(String str){
+        if(str.isEmpty()){
+            return "";
+        }
+        if(str.charAt(0) !='a'){
+            return str.charAt(0)+removeA(str.substring(1));
+        }
+        else{
+            return removeA(str.substring(1));
+        }
     }
     public static void main(String[] args) {
-        String str="abba";
-        StringBuilder ans=new StringBuilder();
-        String res=removeA(str,ans,0);
-        
+        String res=removeA("abbbba");
         System.out.println(res);
     }
 }
