@@ -1,3 +1,5 @@
+
+//it is also based on subset pattern
 import java.util.*;
 
 class Main {
