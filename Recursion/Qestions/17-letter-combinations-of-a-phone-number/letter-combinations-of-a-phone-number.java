@@ -54,37 +54,43 @@ class Solution {
         "pqrs", "tuv", "wxyz"
     };
 
-    public List<String> helper(String p, String up) {
-
-        // base condition
-        if (up.isEmpty()) {
-            List<String> list = new ArrayList<>();
-            list.add(p);
-            return list;
-        }
-
-        int digit = up.charAt(0) - '0';
-
-        String letters = keypad[digit];
+    public List<String> letterCombinations(String digits) {
 
         List<String> ans = new ArrayList<>();
 
-        for (int i = 0; i < letters.length(); i++) {
-
-            char ch = letters.charAt(i);
-
-            ans.addAll(helper(p + ch, up.substring(1)));
+        if (digits.isEmpty()) {
+            return ans;
         }
+
+        backtrack(0, digits, new StringBuilder(), ans);
 
         return ans;
     }
 
-    public List<String> letterCombinations(String digits) {
+    private void backtrack(
+        int index,
+        String digits,
+        StringBuilder current,
+        List<String> ans
+    ) {
 
-        if (digits.isEmpty()) {
-            return new ArrayList<>();
+        // base condition
+        if (index == digits.length()) {
+            ans.add(current.toString());
+            return;
         }
 
-        return helper("", digits);
+        int digit = digits.charAt(index) - '0';
+        String letters = keypad[digit];
+
+        for (char ch : letters.toCharArray()) {
+
+            current.append(ch);
+
+            backtrack(index + 1, digits, current, ans);
+
+            // backtrack
+            current.deleteCharAt(current.length() - 1);
+        }
     }
 }
