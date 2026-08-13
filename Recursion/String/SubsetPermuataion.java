@@ -3,6 +3,21 @@
 import java.util.*;
 
 class Main {
+    
+    //  public static void subsets(String p, String up) {
+    //     if (up.isEmpty()) {
+    //         System.out.println(p);
+    //         return;
+    //     }
+    //     char ch = up.charAt(0);
+
+    //     for (int i = 0; i < p.length() + 1; i++) {
+    //         String newString = p.substring(0, i) + ch + p.substring(i);
+    //         subsets(newString, up.substring(1));
+    //     }
+    // }
+
+
 
     public static ArrayList<String> permutation(String p, String up) {
 
