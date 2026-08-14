@@ -1,5 +1,5 @@
 // You have a standard dice with values from 1 to 6. At every step, you can choose any value between 1 and 6, but the chosen value must not exceed the remaining sum.
-
+//it is given in mazon,use same pattern as subset processed and unprocessed
 import java.util.*;
 
 public class A {
