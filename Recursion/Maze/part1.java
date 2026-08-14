@@ -1,4 +1,5 @@
 //moving down and right to reach to last elemnt count number of posiblity
+//it is based on recurssion
 
 // public class C {
 //     static int maze(int row, int col) {
