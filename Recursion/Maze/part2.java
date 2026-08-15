@@ -1,4 +1,16 @@
-  static List<String> mazeList(String p, int row, int col) {
+
+    // static int countstep(int row, int col) {
+    //     if (row == 1 || col == 1) {
+    //         return 1;
+    //     }
+    //     int right = countstep(row, col - 1);
+    //     int down = countstep(row - 1, col);
+    //     return right + down;
+    // }
+
+
+
+static List<String> mazeList(String p, int row, int col) {
 
         // Base condition
         if (row == 1 && col == 1) {
