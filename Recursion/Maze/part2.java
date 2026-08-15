@@ -9,6 +9,7 @@
     // }
 
 
+//it also have same pattern process and unprocess
 
 static List<String> mazeList(String p, int row, int col) {
 
@@ -24,14 +25,11 @@ static List<String> mazeList(String p, int row, int col) {
         if (row > 1) {
 
             // Move Down
-            List<String> down = mazeList(p + "D", row - 1, col);
-            ans.addAll(down);
+            ans.addAll( mazeList(p + "D", row - 1, col));
         }
         if (col > 1) {
             // Move Right
-
-            List<String> right = mazeList(p + "R", row, col - 1);
-            ans.addAll(right);
+            ans.addAll(mazeList(p + "R", row, col - 1));
         }
 
         return ans;
