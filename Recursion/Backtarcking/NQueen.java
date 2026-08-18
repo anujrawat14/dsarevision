@@ -3,7 +3,7 @@ public class H {
     static void NQueen(boolean[][] board, boolean[][] matrix,
                        int row, int col) {
 
-        // all queens placed
+        // all queens placed every row is reached
         if (row == board.length) {
             printBoard(board);
             return;
