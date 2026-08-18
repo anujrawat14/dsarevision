@@ -1,95 +1,94 @@
-public class H {
+public class text1 {
 
-    static void NQueen(boolean[][] board, int row) {
+    static int Nqueen(boolean matrix[][], int row) {
 
-        // All queens placed
-        if (row == board.length) {
-            printBoard(board);
-            return;
+        // base condition
+        if (row == matrix.length) {
+            display(matrix);
+            return 1;
         }
 
-        // Try every column in current row
-        for (int col = 0; col < board[0].length; col++) {
+        int count = 0;
 
-            if (isSafe(board, row, col)) {
+        // loop to go to each column
 
-                // Place queen
-                board[row][col] = true;
+        for (int col = 0; col < matrix[0].length; col++) {
 
-                // Move to next row
-                NQueen(board, row + 1);
+            // check before placing
+            if (isSafe(matrix, row, col)) {
 
-                // Backtracking
-                board[row][col] = false;
+                matrix[row][col] = true;// place
+
+                count = count + Nqueen(matrix, row + 1);// move
+
+                matrix[row][col] = false;// unplace
+
             }
+
         }
+
+        return count;
     }
 
-    static boolean isSafe(boolean[][] board, int row, int col) {
+    static boolean isSafe(boolean[][] matrix, int row, int col) {
 
-        // Same column
-        for (int r = row - 1; r >= 0; r--) {
-            if (board[r][col]) {
+        // verticall up row
+
+        for (int i = row - 1; i >= 0; i--) {
+            if (matrix[i][col]) {
                 return false;
             }
         }
 
-        // Upper-left diagonal
-        int r = row - 1;
-        int c = col - 1;
+        // upside right diagonal
+        int i = row - 1;
+        int j = col + 1;
 
-        while (r >= 0 && c >= 0) {
-
-            if (board[r][c]) {
+        while (i >= 0 && j <= matrix.length - 1) {
+            if (matrix[i][j]) {
                 return false;
             }
-
-            r--;
-            c--;
+            i--;
+            j++;
         }
 
-        // Upper-right diagonal
-        r = row - 1;
-        c = col + 1;
-
-        while (r >= 0 && c < board[0].length) {
-
-            if (board[r][c]) {
+        // upside left diagonal
+        i = row - 1;
+        j = col - 1;
+        while (i >= 0 && j >= 0) {
+            if (matrix[i][j]) {
                 return false;
             }
-
-            r--;
-            c++;
+            i--;
+            j--;
         }
 
         return true;
     }
 
-    static void printBoard(boolean[][] board) {
-
-        for (int i = 0; i < board.length; i++) {
-
-            for (int j = 0; j < board[0].length; j++) {
-
-                if (board[i][j]) {
+    static void display(boolean[][] matrix) {
+        for (int row = 0; row < matrix.length; row++) {
+            for (int col = 0; col < matrix[0].length; col++) {
+                if (matrix[row][col]) {
                     System.out.print("Q ");
                 } else {
-                    System.out.print(". ");
+                    System.out.print(" ");
                 }
             }
-
             System.out.println();
         }
-
-        System.out.println();
     }
 
     public static void main(String[] args) {
+        boolean matrix[][] = {
+                { false, false, false, false },
+                { false, false, false, false },
+                { false, false, false, false },
+                { false, false, false, false }
+        };
 
-        int n = 4;
+        int ans = Nqueen(matrix, 0);
 
-        boolean[][] board = new boolean[n][n];
-
-        NQueen(board, 0);
+        System.out.println("Total solutions: " + ans);
     }
 }
