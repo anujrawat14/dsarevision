@@ -45,13 +45,12 @@ public class testy {
                 { -2, -1 }, { 2, -1 },
         };
 
-        int r = row;
-        int c = col;
+      
 
         // moves main sa har ek array ko nikalunga or usko row,col ka sath add krunga
         for (int[] move : moves) {
-            r += move[0];
-            c += move[1];
+              int r = row+ move[0];
+              int c = col+move[1];
             if (r >= 0 && r < board.length && c >= 0 && c < board[0].length) {
                 if (board[r][c]) {
                     return false;
